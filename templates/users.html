@@ -1,0 +1,274 @@
+{% load filter %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+        <style>
+
+body {
+  font-family: 'lato', sans-serif;
+}
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+  small {
+    font-size: 0.5em;
+  }
+}
+
+.responsive-table {
+  li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .table-header {
+    background-color: #95A5A6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  }
+  .col-1 {
+    flex-basis: 10%;
+  }
+  .col-2 {
+    flex-basis: 40%;
+  }
+  .col-3 {
+    flex-basis: 25%;
+  }
+  .col-4 {
+    flex-basis: 25%;
+  }
+  
+  @media all and (max-width: 767px) {
+    .table-header {
+      display: none;
+    }
+  
+    li {
+      display: block;
+    }
+    .col {
+      
+      flex-basis: 100%;
+      
+    }
+    .col {
+      display: flex;
+      padding: 10px 0;
+      &:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
+    }
+  }
+}
+
+
+/* Add your existing styles */
+
+/* The Modal (hidden by default) */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+/* Modal content */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.back {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 10px 10px 40px;
+}
+
+.back h4 {
+  color: #323545;
+  font-size : 16px;
+  transform: translateY(8px);
+  transition: transform 500ms 0s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.back span {
+  opacity: 0;
+  color: #373a4a;
+  font-size: 12px;
+  font-weight: 300;
+  display: inline-block;
+  transform: translateY(10px);
+  transition:
+    transform 500ms 0s cubic-bezier(0.2, 0, 0, 1),
+    opacity 500ms 0s cubic-bezier(0.2, 0, 0, 1)
+}
+
+.back div {
+  top: 11px;
+  left: 0;
+  content: '';
+  width: 30px;
+  height: 30px;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(1);
+  background-color: #20193a;
+  transition: transform 400ms 0s cubic-bezier(0.2, 0, 0, 1.6);
+}
+
+.back div::after {
+  top: 0;
+  left: 0;
+  content: '';
+  width: 60px;
+  height: 30px;
+  position: absolute;
+  background-position: 0 0;
+  background-image: url('https://s3-eu-west-1.amazonaws.com/thomascullen-codepen/back.svg');
+  transition: transform 400ms 0s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.back:hover h4 {
+  color: #171922;
+}
+
+.back:hover h4,
+.back:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back:hover div {
+  transform: scale(1.1);
+  background-color: white;
+  box-shadow:
+    0 2px 10px 0 rgba(185,182,198,0.00),
+    0 1px 3px 0 rgba(175,172,189,0.25);
+}
+
+.back:hover div::after {
+  transform: translateX(-30px);
+}
+
+
+
+
+        </style>
+</head>
+
+
+<body>
+  <a href="{% url 'home' %}" class="back">
+    <div style="margin : 10px;"></div>
+    <span style="font-weight :bold;">Back to home</span>
+  </a>
+
+    <div class="container">
+        <h2>USER'S DATA </h2>
+        <ul class="responsive-table">
+          <li class="table-header">
+            <div class="col col-1">S.NO</div>
+            <div class="col col-2">User Name</div>
+            <div class="col col-3">User Number</div>
+            <div class="col col-4">user Email</div>
+            <div class="col col-4">Message</div>
+            
+
+          </li>
+
+          {% for user in users %}
+          <li class="table-row">
+            <div class="col col-1" data-label="S.No">{{ forloop.counter }}</div>
+            <div class="col col-2" data-label="Name">{{user.name}}</div>
+            <div class="col col-3" data-label="Phone Number">{{user.phone_number}}</div>
+            <div class="col col-4" data-label="User Email">{{user.email}}</div>
+            <div class="col col-4" data-label="Message">{{user.message|truncate_to_10_words}}</div>
+            <button onclick="openModal('modal{{ forloop.counter }}')">Info</button>
+          </li>
+
+          <div id="modal{{ forloop.counter }}" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal{{ forloop.counter }}')">&times;</span>
+                <p>User Information:</p>
+                <p><strong>Name:</strong> {{ user.name }}</p>
+                <p><strong>Phone Number:</strong> {{ user.phone_number }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Message:</strong> {{ user.message }}</p>
+            </div>
+        </div>
+          
+          {%endfor%}
+        </ul>
+      </div>
+
+
+
+      <script>
+
+        function openModal(modalId) {
+          var modal = document.getElementById(modalId);
+          modal.style.display = 'block';
+      }
+      
+      function closeModal(modalId) {
+          var modal = document.getElementById(modalId);
+          modal.style.display = 'none';
+      }
+      </script>
+   
+</body>
+</html>

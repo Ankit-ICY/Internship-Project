@@ -1,0 +1,155 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'footer.css' %}">
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <section id="one">
+        <nav id="nav">
+
+            <div class="nav-logo">
+                <div class="nav-heading">
+                    <span href="#"><i class="fas fa-paw logo white"></i>Blogosphere</span>
+
+                </div>
+
+                <div class="hamburger">
+                    <a href="#"><i class="far fa-moon white "></i></a>
+                    <a href="#"><i class="fas fa-bars "></i></a>
+
+                </div>
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="#about_div">ABOUT</a></li>
+                <li><a href="{% url 'contact' %}">CONTACT</a></li>
+                <li><a href="{% url 'users' %}">USERS </a>
+                </li>
+                <li><a>CONTACT</a></li>
+
+            </ul>
+
+
+        </nav>
+
+
+
+        <div class="content">
+            {% comment %} <h2 style="color:white; margin-top:10%;">Todays Date : {{ current_datetime }}</h2 style="color:white;"> {% endcomment %}
+
+            <div class="text-content">
+
+                <h1 class="white">Todays Date/Time :
+                    <br />
+                     <strong>{{ current_datetime }}</strong>
+                </h1>
+                <h4 class="blackish">{{ random_quote }}</h4>
+             
+   <div class="two-button">
+
+
+                    <button class="w-btn btn">View Our Services</button>
+                    <button class="t-btn btn">Hire Us</button>
+                </div>
+
+            </div>
+    </section>
+
+
+
+
+    
+
+    <div class="content_box"  id="about_div" >
+
+        <div class="buss_image">
+            <img src="/static/collection/pexels-jess-bailey-designs-965117.jpg"/>
+        </div>
+        
+            <div class="buss_text" >
+                <div class="content_div">
+                <h3 class="content_head">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                <p class="buss_text-p" >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore nihil saepe doloribus cum in veniam aperiam ratione porro culpa a praesentium eum ipsum hic eos modi, quos ex dolor! Iste modi, quibusdam, eaque eos ullam quia tempore consequuntur autem repellat excepturi assumenda atque maiores molestiae? Error totam adipisci dicta maxime praesentium vero, aperiam magni eligendi asperiores consectetur odio officia molestiae facilis cumque, provident laboriosam ducimus, nulla perferendis assumenda atque corporis. Consequuntur iste error dolorem laboriosam sed, praesentium eligendi beatae fugit magnam accusamus enim facilis nulla ut, a doloremque autem numquam doloribus corporis expedita rerum eveniet odio sapiente? A, hic. Molestiae sed omnis modi, totam rerum explicabo veritatis, eos quia maxime ut repellat unde. Laudantium debitis sint architecto rem omnis fugit blanditiis sit voluptas, cumque iure consectetur soluta. Nemo, aspernatur! Iure, sit sapiente minima atque ab natus doloribus. Perspiciatis, id eius cupiditate modi dolorem odio adipisci culpa, voluptas aliquid, eaque consequuntur.</p>
+                <div class="cont_count">
+                    <div class="count-1"> 
+                        <h1 class="count" id="value">15<span>+</span></h1>
+                        <p>Happy CLIENTLE</p>
+                    </div>
+
+                    <div class="count-1">
+                        <h1 class="count" id="value2">1500<span>+</span></h1>
+                        <p>Creatives created</p>
+                    </div> 
+                    <div class="count-1">
+                        <h1 class="count" id="value">2X</h1>
+                        <p>Business growth</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    
+
+
+
+
+
+
+
+        
+
+        
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">XYZ</a></li>
+                    </ul>
+                </div>
+              
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+
+
+
+
+    <script>
+
+        
+    </script>
+</body>
+</html>

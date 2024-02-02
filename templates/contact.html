@@ -1,0 +1,239 @@
+{% load static %}
+{% load tz %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'contact.css' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+    <title>Contact Us</title>
+
+    <style>
+
+    
+
+    .back {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 10px 10px 40px;
+    }
+    
+    .back h4 {
+      color: #323545;
+      font-size : 16px;
+      transform: translateY(8px);
+      transition: transform 500ms 0s cubic-bezier(0.2, 0, 0, 1);
+    }
+    
+    .back span {
+      opacity: 0;
+      color: #373a4a;
+      font-size: 12px;
+      font-weight: 300;
+      display: inline-block;
+      transform: translateY(10px);
+      transition:
+        transform 500ms 0s cubic-bezier(0.2, 0, 0, 1),
+        opacity 500ms 0s cubic-bezier(0.2, 0, 0, 1)
+    }
+    
+    .back div {
+      top: 11px;
+      left: 0;
+      content: '';
+      width: 30px;
+      height: 30px;
+      display: block;
+      overflow: hidden;
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(1);
+      background-color: #20193a;
+      transition: transform 400ms 0s cubic-bezier(0.2, 0, 0, 1.6);
+    }
+    
+    .back div::after {
+      top: 0;
+      left: 0;
+      content: '';
+      width: 60px;
+      height: 30px;
+      position: absolute;
+      background-position: 0 0;
+      background-image: url('https://s3-eu-west-1.amazonaws.com/thomascullen-codepen/back.svg');
+      transition: transform 400ms 0s cubic-bezier(0.2, 0, 0, 1);
+    }
+    
+    .back:hover h4 {
+      color: #171922;
+    }
+    
+    .back:hover h4,
+    .back:hover span {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .back:hover div {
+      transform: scale(1.1);
+      background-color: white;
+      box-shadow:
+        0 2px 10px 0 rgba(185,182,198,0.00),
+        0 1px 3px 0 rgba(175,172,189,0.25);
+    }
+    
+    .back:hover div::after {
+      transform: translateX(-30px);
+    }
+
+
+
+
+        .notification-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+    
+        #notification {
+            height: 40px;
+            width: 70%;
+            border-radius: 20px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .success-notification {
+            background-color: rgb(5, 194, 5);
+            color: white;
+        }
+    
+        .error-notification {
+            background-color: red;
+            color: white;
+        }
+    
+        #notification p {
+            text-align: center;
+            letter-spacing: 1px;
+            margin: 0; /* Remove default margin to center the text */
+        }
+        .check_data{
+            /* text-decoration: none; */
+            color: rgb(170, 31, 31);
+
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'home' %}" class="back" >
+        <div style="margin : 10px;"></div>
+        <span style="font-weight :bold;">Back to home</span>
+      </a>
+
+    {% if notification %}
+        <div id="notification-container" class="notification-container">
+            {% if notification == 'success' %}
+                <div id="notification" class="success-notification">
+                    <p>Submitted successfully! <a href="{% url 'users' %}" class="check_data">Check your Data -></a></p>
+                </div>
+            {% endif %}
+    
+            {% if notification == 'Invalid Number' %}
+                <div id="notification" class="error-notification">
+                    <p>Invalid Number!</p>
+                </div>
+            {% endif %}
+    
+            {% if notification == 'Invalid Email' %}
+                <div id="notification" class="error-notification">
+                    <p>Invalid Email!</p>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+
+
+    <div id="contact_div" style="height: 100%; ">
+    <section class="contact" id="contact" >
+        <div class="container">
+            <div class="heading text-center">
+                <h1 style="color: hsl(260 97% 61% / 0.75); font-weight: bold; font-size: 230%;">Contact 
+                    <span> Us </span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    <br>incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="titled">
+                        <h3>Contact detail</h3>
+                        <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+                    </div>
+                    <div class="content">
+                        <!-- Info-1 -->
+                        <div class="info">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4 class="d-inline-block">PHONE :
+                                <br>
+                                <span>+12457836913 , +12457836913</span></h4>
+                        </div>
+                        <!-- Info-2 -->
+                        <div class="info">
+                            <i class="far fa-envelope"></i>
+                            <h4 class="d-inline-block">EMAIL :
+                                <br>
+                                <span>example@info.com</span></h4>
+                        </div>
+                        <!-- Info-3 -->
+                        <div class="info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4 class="d-inline-block">ADDRESS :<br>
+                                <span>6743 last street , Abcd, Xyz</span></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Name" name="name">
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="email" class="form-control" placeholder="Email" name="email">
+                            </div>
+                            <div class="col-sm-12">
+                                <input type="number" class="form-control" placeholder="Phone No" name="number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control"  type="text"  id="comment" placeholder="Message"  name="message"/>
+                        </div>
+                        <button class="btn btn-block" type="submit">Send Now!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+
+
+    <script>
+            setTimeout(function() {
+            var notificationContainer = document.getElementById('notification-container');
+            notificationContainer.style.display = 'none';
+        }, 3000);
+        </script>
+</body>
+</html>
